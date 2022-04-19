@@ -3,19 +3,17 @@
 function  recursionOdd($numOne, $numTwo){
     $randNum = rand($numOne,$numTwo);
     if (($randNum % 2) != 0){
-        $randNum;
+       return($randNum);
     }
     else(recursionOdd ($numOne,$numTwo));
-    return($randNum);
 }
 
 function  recursionEven($numOne,$numTwo){
     $randNum = rand($numOne,$numTwo);
     if (($randNum % 2) == 0){
-        $randNum;
+        return($randNum);
     }
     else(recursionEven ($numOne,$numTwo));
-   return($randNum);
 }
 
 $numOne = 0;
