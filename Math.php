@@ -18,7 +18,7 @@ function  recursionOdd($numOne, $numTwo) {
     else{
         return recursionOdd($numOne, $numTwo);
     }
-    }
+}
 
 $numOne = 0;
 $numTwo = 20;
