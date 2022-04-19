@@ -19,6 +19,7 @@ function  recursionEven($num){
 }
 
 $randNum = rand(0,20);
+$randNumTwo = rand(0,20);
 print_r(recursionOdd($randNum));
-print_r(recursionEven($randNum))
+print_r(recursionEven($randNumTwo))
 ?>
