@@ -5,7 +5,7 @@ function  recursionOdd($num){
     if (($num % 2) != 0){
         echo $num;
     }
-    else(recursion ($num +1));
+    else(recursionOdd ($num +1));
 
 }
 
@@ -14,7 +14,7 @@ function  recursionEven($num){
     if (($num % 2) == 0){
         echo $num;
     }
-    else(recursion ($num +1));
+    else(recursionEven ($num +1));
 
 }
 
