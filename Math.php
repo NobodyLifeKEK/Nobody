@@ -1,25 +1,21 @@
 <?php
-function oddNumber($oneNum, $twoNum) {
-    do{
-        $randNum = rand($oneNum, $twoNum);
+function  recursionOdd($num){
+
+    if (($num % 2) != 0){
+        echo $num;
     }
-    while(($randNum % 2) == 0);
-    return $randNum;
-}
+    else(recursion ($num +1));
 
-function evenNumber($oneNum, $twoNum) {
-    do{
-        $randNum = rand($oneNum, $twoNum);
+}
+function  recursionEven($num){
+
+    if (($num % 2) == 0){
+        echo $num;
     }
-    while(($randNum % 2) != 0);
-    return $randNum;
+    else(recursion ($num +1));
+
 }
-
-$minNum = 1;
-$maxNum = 20;
-$oddNum = oddNumber($minNum, $maxNum);
-$evenNum = evenNumber($minNum, $maxNum);
-echo $oddNum.'<br>';
-echo $evenNum;
-
+$randNum = rand(0,20);
+print_r(recursionOdd($randNum))
+print_r(recursionEven($randNum))
 ?>
