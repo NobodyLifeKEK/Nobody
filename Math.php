@@ -18,7 +18,7 @@ function  recursionEven($numOne,$numTwo){
 
 }
 
-$numOne = 1;
+$numOne = 0;
 $numTwo = 20;
 echo recursionOdd($numOne,$numTwo).'<br>';
 echo recursionEven($numOne,$numTwo);
