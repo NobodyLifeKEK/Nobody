@@ -1,23 +1,28 @@
 <?php
 
-function  recursionOdd($numOne, $numTwo){
-    $randNum = rand($numOne,$numTwo);
-    if (($randNum % 2) != 0){
-       return($randNum);
-    }
-    else(recursionOdd ($numOne,$numTwo));
-}
-
-function  recursionEven($numOne,$numTwo){
+function  recursionEven($numOne,$numTwo) {
     $randNum = rand($numOne,$numTwo);
     if (($randNum % 2) == 0){
-        return($randNum);
     }
-    else(recursionEven ($numOne,$numTwo));
+    else {
+        recursionEven($numOne,$numTwo);
+    }
+    return ($randNum);
+}
+
+function  recursionOdd($numOne, $numTwo) {
+    $randNum = rand($numOne,$numTwo);
+    if (($randNum % 2) != 0){
+    }
+    else{
+        recursionOdd($numOne, $numTwo);
+    }
+    return ($randNum);
 }
 
 $numOne = 0;
 $numTwo = 20;
-echo recursionOdd($numOne,$numTwo).'<br>';
-echo recursionEven($numOne,$numTwo);
-?>
+$oddNum = recursionOdd($numOne,$numTwo);
+$evenNum = recursionEven($numOne,$numTwo);
+echo $oddNum.'<br>';
+echo $evenNum;
