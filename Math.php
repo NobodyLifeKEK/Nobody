@@ -3,22 +3,22 @@
 function  recursionEven($numOne,$numTwo) {
     $randNum = rand($numOne,$numTwo);
     if (($randNum % 2) == 0){
+        return $randNum;
     }
     else {
-        recursionEven($numOne,$numTwo);
+        return recursionEven($numOne,$numTwo);
     }
-    return ($randNum);
 }
 
 function  recursionOdd($numOne, $numTwo) {
     $randNum = rand($numOne,$numTwo);
     if (($randNum % 2) != 0){
+        return $randNum;
     }
     else{
-        recursionOdd($numOne, $numTwo);
+        return recursionOdd($numOne, $numTwo);
     }
-    return ($randNum);
-}
+    }
 
 $numOne = 0;
 $numTwo = 20;
