@@ -1,3 +1,4 @@
+<pre>
 <?php
 
 function  recursionEven($numOne,$numTwo) {
@@ -20,10 +21,18 @@ function  recursionOdd($numOne, $numTwo) {
     }
     }
 
-function massiveRand($Num) {
+function massiveEven($Num) {
     $randArr = [];
     for ($i = 0; $i < $Num; $i++) {
         $randArr[$i] = recursionEven(2,80);
+    }
+    return $randArr;
+}
+
+function massiveOdd($Num) {
+    $randArr = [];
+    for ($i = 0; $i < $Num; $i++) {
+        $randArr[$i] = recursionOdd(81, 159);
     }
     return $randArr;
 }
@@ -51,15 +60,47 @@ function arrSub($arr) {
     }return $result;
 }
 
-$a = 3;
-$b = 6;
-$numOne = 2;
-$numTwo = 80;
-$oddNum = recursionOdd($numOne,$numTwo);
-$evenNum = recursionEven($numOne,$numTwo);
-$mass = massiveRand(10);
-$deletedArr = deletedArray($a, $b, $mass);
+function allArr($massEv, $massOdd) {
+    $newArray = [];
+    foreach ($massOdd as $value) {
+        $newArray[] = $value;
+    }
+    foreach ($massEv as $value) {
+        $newArray[] = $value;
+        $i++;
+    }
+    return $newArray;
+}
+
+function sortArr($allArr)
+{
+    $arrayCount = count($allArr);
+
+    for ($i = 0; $i < $arrayCount - 1; $i++) {
+        for ($j = $i + 1; $j < $arrayCount; $j++) {
+            if ($allArr[$j] < $allArr[$i]) {
+                $temp = $allArr[$i];
+                $allArr[$i] = $allArr[$j];
+                $allArr[$j] = $temp;
+            }
+        }
+    }return$allArr;
+}
+
+$oddNum = recursionOdd(81,159);
+$evenNum = recursionEven(2,80);
+$massEv = massiveEven(10);
+$massOdd = massiveOdd(5);
+$deletedArr = deletedArray(3, 7, $massEv);
+$allArrey = allArr($massEv,$massOdd);
+$sortArr = sortArr($allArrey);
+$arrSub = (arrSub($deletedArr));
+print_r($massEv);
+print_r($deletedArr);
+print_r($arrSub);
+print_r($allArrey);
+print_r(sortArr($sortArr));
 echo $oddNum.'<br>';
 echo $evenNum.'<br>';
-print_r($deletedArr);
-print_r(arrSub($deletedArr));
+?>
+</pre>
