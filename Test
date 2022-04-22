@@ -50,8 +50,8 @@ function createArr($n, $m) {
 } //Создает двумерный массив размером 7 на 5
  function twoArr($arr) {
     $sum=0;
-    for ($i=0;$i<count($arr);$i++){
-        $sum+=array_sum($arr[$i]);
+    for ($i=0; $i < count($arr); $i++){
+        $sum += array_sum($arr[$i]);
     }
     return $sum;
 } // суммирует массив 
