@@ -48,15 +48,12 @@ function createArr($n, $m) {
     }
     return $array;
 } //Создает двумерный массив размером 7 на 5
-
-function twoArr($arr) {
-    foreach ($arr as $elem) {
-        $elem += $elem;
+ function twoArr($arr) {
+    $sum=0;
+    for ($i=0;$i<count($arr);$i++){
+        $sum+=array_sum($arr[$i]);
     }
-    foreach ($elem as $key) {
-        $key += $key;
-    }
-    return $key;
+    return $sum;
 } // суммирует массив 
 
 function createArrayTwo($n, $m) {
