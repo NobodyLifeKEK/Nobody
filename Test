@@ -1,1 +1,93 @@
+<pre>
+<?php
 
+function arrey($num) {
+    $massiv = [];
+    for($i=0; $i < $num; $i++) {
+        $massiv[] = $i * rand(1, 100);
+    }
+    return $massiv;
+} // создание массива c рандомным умножением от 1 до 100
+
+function massivSumm($arr) {
+    $sum = 0;
+    foreach ($arr as $key => $elem) {
+        if (($key % 2) != 0) {
+            continue;
+        }
+        $sum += $elem;
+    }return $sum;
+} //  сумму всех четных номеров элементов массива
+
+function arreyNum($num) {
+    $massiv = [];
+    for($i=0; $i < $num; $i++) {
+        $massiv[] = rand(1, 100);
+    }
+    return $massiv;
+} // создание массива с рандомными элементами от 1 до 100
+
+function sumMass($arr) {
+    $bool = false;
+    foreach ($arr as $elem) {
+        if ($elem > 50 && ($elem % 2) != 0) {
+            $bool = true;
+        }
+        if ($bool == true) {
+            $Sum += $elem;
+        }
+    }
+    return $Sum;
+} //сумма элементов массива после k, где k - первое нечетное число больше 50
+
+function createArr($n, $m) {
+    for ( $i = 0; $i < $n; $i++ ) {
+        for ($j = 0; $j < $m; $j++) {
+            $array[$i][$j] = rand(0, 10);
+        }
+    }
+    return $array;
+} //Создает двумерный массив размером 7 на 5
+
+function twoArr($arr) {
+    foreach ($arr as $elem) {
+        $elem += $elem;
+    }
+    foreach ($elem as $key) {
+        $key += $key;
+    }
+    return $key;
+} // суммирует массив 
+
+function createArrayTwo($n, $m) {
+    for ( $i = 0; $i < $n; $i++ ) {
+        for ($j = 0; $j < $m; $j++) {
+            $array[$i][$j] = rand(0, 10);
+        }
+    }
+    return $array;
+} // создает массив 6 на 6 
+
+function sortArr($allArr) {
+    $arrayCount = count($allArr);
+    for ($i = 0; $i < $arrayCount - 1; $i++) {
+        for ($j = $i + 1; $j < $arrayCount; $j++) {
+            if ($allArr[$j] < $allArr[$i]) {
+                $temp = $allArr[$i];
+                $allArr[$i] = $allArr[$j];
+                $allArr[$j] = $temp;
+            }
+        }
+    }
+    return $allArr;
+}
+
+$arreyNums = arreyNum(25);
+$massiv = arrey(15);
+$mas = sumMass($arreyNums);
+$twoMas = createArr(7, 5);
+$twoMas = createArr(6, 6);
+$sum = twoArr($twoMas);
+print_r($mas);
+?>
+</pre>
