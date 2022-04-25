@@ -48,12 +48,16 @@ function createArr($n, $m) {
     }
     return $array;
 } //Создает двумерный массив размером 7 на 5
- function twoArr($arr) {
+
+function twoArr($twoMas) {
     $sum=0;
-    for ($i=0; $i < count($arr); $i++){
-        $sum += array_sum($arr[$i]);
+    foreach ($twoMas as $sub) {
+        foreach ($sub as $elem) {
+            $sum += $elem;
+        }
     }
     return $sum;
+
 } // суммирует массив 
 
 function createArrayTwo($n, $m) {
@@ -63,7 +67,7 @@ function createArrayTwo($n, $m) {
         }
     }
     return $array;
-} // создает массив 6 на 6 
+} // создает массив 6 на 6
 
 function sortArr($allArr) {
     $arrayCount = count($allArr);
@@ -79,12 +83,67 @@ function sortArr($allArr) {
     return $allArr;
 }
 
+function sortArrMinMax($allArr) {
+    $arrayCount = count($allArr);
+    for ($i = 0; $i < $arrayCount - 1; $i++) {
+        for ($j = $i + 1; $j < $arrayCount; $j++) {
+            if ($allArr[$j] < $allArr[$i]) {
+                $temp = $allArr[$i];
+                $allArr[$i] = $allArr[$j];
+                $allArr[$j] = $temp;
+            }
+        }
+    }
+    return $allArr;
+} //сортирует массив от меньшего к большему
+
+function sortArrMaxMin($allArr) {
+    $arrayCount = count($allArr);
+    for ($i = 0; $i < $arrayCount - 1; $i++) {
+        for ($j = $i + 1; $j < $arrayCount; $j++) {
+            if ($allArr[$j] > $allArr[$i]) {
+                $temp = $allArr[$i];
+                $allArr[$i] = $allArr[$j];
+                $allArr[$j] = $temp;
+            }
+        }
+    }
+    return $allArr;
+} //сортирует массив от меньшего к большему
+
+function sortArrEvObb($arr) {
+    $arrayCount = count($arr);
+    for($i = 0; $i < $arrayCount; $i++) {
+        if (($i % 2) == 0) {
+            $arr[$i] = sortArrMinMax($arr[$i]);
+        }
+        else {
+            $arr[$i] = sortArrMaxMin($arr[$i]);
+        }
+    }
+    return $arr;
+} // Отсортирует все четные строки по возрастанию элементов, а все нечетные - по убыванию.
+
+function print_2d($arr) {
+    $rows = count($arr);
+    $cols = count($arr[0]);
+    echo "<table>";
+    for ($row = 0; $row < $rows; $row++) {
+        echo "<tr>";
+        for ($col = 0; $col < $cols; $col++) {
+            echo "<td>".$arr[$row][$col]."</td>";
+        }
+        echo "</tr>";
+    }
+    echo "</table>";
+} // Таблица
+
 $arreyNums = arreyNum(25);
 $massiv = arrey(15);
 $mas = sumMass($arreyNums);
 $twoMas = createArr(7, 5);
-$twoMas = createArr(6, 6);
+$twoMasTwo = createArrayTwo(6,6);
 $sum = twoArr($twoMas);
-print_r($mas);
+print_2d(sortArrEvObb($twoMasTwo));
 ?>
 </pre>
