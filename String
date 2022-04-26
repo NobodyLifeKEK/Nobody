@@ -1,0 +1,5 @@
+<?php
+$text = file_get_contents('test.txt.txt');
+file_put_contents('task1.txt', $text);
+$textTwo = file_put_contents('task2.txt', $text);
+$file = fopen("task2.txt", "r");
