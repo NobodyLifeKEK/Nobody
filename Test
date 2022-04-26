@@ -111,14 +111,13 @@ function sortArrMaxMin($allArr) {
     return $allArr;
 } //сортирует массив от меньшего к большему
 
-function sortArrEvObb($arr) {
-    $arrayCount = count($arr);
-    for($i = 0; $i < $arrayCount; $i++) {
+function sortEvObb($arr) {
+    foreach($arr as $i => $row) {
         if (($i % 2) == 0) {
-            $arr[$i] = sortArrMinMax($arr[$i]);
+            $arr[$i] = sortArrMinMax($row);
         }
         else {
-            $arr[$i] = sortArrMaxMin($arr[$i]);
+            $arr[$i] = sortArrMaxMin($row);
         }
     }
     return $arr;
