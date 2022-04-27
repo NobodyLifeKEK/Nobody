@@ -2,10 +2,11 @@
 $text = file_get_contents('test.txt.txt');
 file_put_contents('task1.txt', $text);
 echo $text;
+$arrText = explode(" ", $text);
 function deletVowel($textTwo){
      $vowels = ['a', 'А', 'о', 'О', 'э', 'Э', 'е', 'Е', 'и', 'И', 'ы', 'Ы', 'у', 'У', 'ё', 'Ё', 'ю', 'Ю', 'я', 'Я'];
      foreach ($textTwo as $index => $element)
-         if($index == $vowels) {
+         if($element == $vowels) {
              unset($textTwo[$element]);
          }
      return $textTwo;
