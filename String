@@ -1,14 +1,34 @@
 <?php
 $text = file_get_contents('test.txt.txt');
 file_put_contents('task1.txt', $text);
-echo $text;
-$arrText = explode(" ", $text);
-function deletVowel($textTwo){
-     $vowels = ['a', 'А', 'о', 'О', 'э', 'Э', 'е', 'Е', 'и', 'И', 'ы', 'Ы', 'у', 'У', 'ё', 'Ё', 'ю', 'Ю', 'я', 'Я'];
-     foreach ($textTwo as $index => $element)
-         if($element == $vowels) {
-             unset($textTwo[$element]);
-         }
-     return $textTwo;
+file_put_contents('task2.txt', $text);
+file_put_contents('task3.txt', $text);
+file_put_contents('task4.txt', $text);
+$arr = file('task2.txt');
+$pattern = [ 'а', 'А', 'о', 'О', 'э', 'Э', 'е', 'Е', 'и', 'И', 'ы', 'Ы', 'у', 'У', 'ё', 'Ё', 'ю', 'Ю', 'я', 'Я'];
+$fultext = str_replace($pattern,'',$arr);
+$textTwo = file_put_contents('task2.txt', $text);
+
+function dletedLines($lines) {
+    for ($i = 0; $i < count($lines); $i++){
+        if($i % 3 == 0){
+            unset($lines[$i]);
+        }
+    }
+    file_put_contents('task3.txt', implode('', $lines));
+    return $lines;
 }
+function deletedObb($filename) {
+    foreach ($filename as $element)
+    for($i = 0; $i < count($element); $i++) {
+            if($element[$i] % 2 != 0) {
+                $delet = substr_replace($element, '', $i);
+            }
+    }
+
+}
+$textFour = file_get_contents('task4.txt');
+$eleement = explode(" ", $textFour);
+$Lines = file('task3.txt');
+print_r(deletedObb($eleement));
 print_r (deletVowel($arrText));
