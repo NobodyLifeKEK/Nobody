@@ -2,7 +2,6 @@
 $text = file_get_contents('test.txt.txt');
 file_put_contents('task1.txt', $text);
 file_put_contents('task2.txt', $text);
-$arr = file('task2.txt');
 file_put_contents('task3.txt', $text);
 file_put_contents('task4.txt', $text);
 file_put_contents('task5.txt', $text);
@@ -15,7 +14,20 @@ function dletedLines($lines) {
     }
     file_put_contents('task3.txt', implode('', $lines));
     return $lines;
-}
+} //удаление строк
+
+function deletedObb($filename) {
+    foreach ($filename as $index => $element) {
+        for ($i = 0; $i * 2 < strlen($element); $i++) {
+            if ($i  % 2 != 0) {
+                $new .= $element[$i * 2];
+                $new .= $element[$i * 2 + 1];
+            }
+        }
+        $element = $new;
+    }
+    return $element;
+} //недо удаление четных знаков
 
 function arrSimbol($arr) {
     $countArr = count($arr);
@@ -25,7 +37,7 @@ function arrSimbol($arr) {
         }
     }
     return $arr;
-}
+} //удаление нечетных букв
 
 function word($word) {
     $newArr = [];
@@ -39,21 +51,22 @@ function word($word) {
         }
     }
     return $newArr;
-}
+} //удаление слов с символами больше или меньше 7-10 символов
 
-$pattern = [ 'а', 'А', 'о', 'О', 'э', 'Э', 'е', 'Е', 'и', 'И', 'ы', 'Ы', 'у', 'У', 'ё', 'Ё', 'ю', 'Ю', 'я', 'Я'];
-$fultext = str_replace($pattern,'',$arr);
-$textTwo = file_put_contents('task2.txt', $text);
-$textFour = file_get_contents('task4.txt');
-$arrSim = preg_split("//u", $textFour, -1, PREG_SPLIT_NO_EMPTY);
-$newArr = arrSimbol($arrSim);
-$siple = implode($newArr);
-$textFour = file_get_contents('task4.txt');
-$eleement = explode(" ", $textFour);
-$Lines = file('task3.txt');
-$textFive = file_get_contents('task5.txt');
-$words = explode(" ", $textFive);
-$wordsTen = word($words);
-$sip = implode(" ", $wordsTen);
+$arr = file('task2.txt');//,берем файл 'task2.txt'
+$pattern = [ 'а', 'А', 'о', 'О', 'э', 'Э', 'е', 'Е', 'и', 'И', 'ы', 'Ы', 'у', 'У', 'ё', 'Ё', 'ю', 'Ю', 'я', 'Я']; //гласные
+$fultext = str_replace($pattern,'',$arr); //удаление гласных
+$textTwo = file_put_contents('task2.txt', $text); //пишем данные файл text 'таск2'
+$textFour = file_get_contents('task4.txt'); //читаем файл 'task4.txt' в строку
+$eleement = explode(" ", $textFour); //разбивает строки на элементы слов
+$arrSim = preg_split("//u", $textFour, -1, PREG_SPLIT_NO_EMPTY); //разбиваем текст по буквенно
+$newArr = arrSimbol($arrSim); //массив с нечетными буквами
+$siple = implode($newArr); //объединяем массив с нечетными буквами
+$arr = file('task2.txt');
+$Lines = file('task3.txt');//берем файл 'task3.txt'
+$textFive = file_get_contents('task5.txt'); //читаем файл 'task5.txt' в строку
+$words = explode(" ", $textFive); //разбивает строки на элементы слов
+$wordsTen = word($words); //функция со словами от 7 до 10 символами
+$sip = implode(" ", $wordsTen); //объединяем функцию со словами
 print_r($siple);
 print_r($sip);
