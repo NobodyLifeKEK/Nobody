@@ -2,12 +2,10 @@
 $text = file_get_contents('test.txt.txt');
 file_put_contents('task1.txt', $text);
 file_put_contents('task2.txt', $text);
+$arr = file('task2.txt');
 file_put_contents('task3.txt', $text);
 file_put_contents('task4.txt', $text);
-$arr = file('task2.txt');
-$pattern = [ 'а', 'А', 'о', 'О', 'э', 'Э', 'е', 'Е', 'и', 'И', 'ы', 'Ы', 'у', 'У', 'ё', 'Ё', 'ю', 'Ю', 'я', 'Я'];
-$fultext = str_replace($pattern,'',$arr);
-$textTwo = file_put_contents('task2.txt', $text);
+file_put_contents('task5.txt', $text);
 
 function dletedLines($lines) {
     for ($i = 0; $i < count($lines); $i++){
@@ -18,17 +16,44 @@ function dletedLines($lines) {
     file_put_contents('task3.txt', implode('', $lines));
     return $lines;
 }
-function deletedObb($filename) {
-    foreach ($filename as $element)
-    for($i = 0; $i < count($element); $i++) {
-            if($element[$i] % 2 != 0) {
-                $delet = substr_replace($element, '', $i);
-            }
-    }
 
+function arrSimbol($arr) {
+    $countArr = count($arr);
+    for($i = 0; $i < $countArr; $i++) {
+        if (($i % 2) == 0) {
+            unset($arr[$i]);
+        }
+    }
+    return $arr;
 }
+
+function word($word) {
+    $newArr = [];
+    foreach ($word as $elem) {
+        $length = iconv_strlen($elem);
+        if ($length >= 7 and $length <= 10 ) {
+            $newArr[] .= $elem;
+        }
+        else {
+            unset($elem);
+        }
+    }
+    return $newArr;
+}
+
+$pattern = [ 'а', 'А', 'о', 'О', 'э', 'Э', 'е', 'Е', 'и', 'И', 'ы', 'Ы', 'у', 'У', 'ё', 'Ё', 'ю', 'Ю', 'я', 'Я'];
+$fultext = str_replace($pattern,'',$arr);
+$textTwo = file_put_contents('task2.txt', $text);
+$textFour = file_get_contents('task4.txt');
+$arrSim = preg_split("//u", $textFour, -1, PREG_SPLIT_NO_EMPTY);
+$newArr = arrSimbol($arrSim);
+$siple = implode($newArr);
 $textFour = file_get_contents('task4.txt');
 $eleement = explode(" ", $textFour);
 $Lines = file('task3.txt');
-print_r(deletedObb($eleement));
-print_r (deletVowel($arrText));
+$textFive = file_get_contents('task5.txt');
+$words = explode(" ", $textFive);
+$wordsTen = word($words);
+$sip = implode(" ", $wordsTen);
+print_r($siple);
+print_r($sip);
